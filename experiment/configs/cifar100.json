@@ -1,0 +1,20 @@
+{
+    "dataset": "CIFAR100",
+    "model": "CNNCifar100",
+    "batch_size": 50,
+    "lr_head": 0.001,
+    "lr_base": 0.01,
+    "base_epochs": 5,
+    "momentum": 0.9,
+    "n_labels": 20,
+    "relabel": true,
+    "n_rounds": 100,
+    "n_clients": 100,
+    "sampling_rate": 0.1,
+    "seed": 42,
+    "path_to_data": "./data",
+    "head_epochs": 20,
+    "scale": 1,
+    "max_data": null,
+    "n_mc": 5
+}
