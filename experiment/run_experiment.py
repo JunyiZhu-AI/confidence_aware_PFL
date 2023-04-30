@@ -40,6 +40,7 @@ def main(**kwargs):
     else:
         del kwargs["config"]
 
+    print(kwargs)
     train(**kwargs)
 
 
