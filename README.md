@@ -65,7 +65,7 @@ python3 -m experiment.run_experiment \
       --scale 1
 ```
 
-### Additional Notes
+### Modify
 The explanation of hyperparameters can be found in the ```experiment\run_experiment.py``` file. Our method employs a head-base architecture, making it easily adaptable to other types of networks. If you wish to modify the network, we recommend fine-tuning the hyperparameters. In our experience, it is efficient to use the hyperparameters of Federated Averaging (FedAvg) for the base network, while only tuning the head network specifically.
 
 ### Citation
