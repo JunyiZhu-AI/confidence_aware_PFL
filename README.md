@@ -19,8 +19,8 @@ Make sure that conda is installed.
 ```sh
 git clone git@github.com:JunyiZhu-AI/confidence_aware_PFL.git
 cd confidence_aware_PFL
-conda create -n pfedvem python==3.8
-conda activate pfedvem
+conda create -n vem python==3.8
+conda activate vem
 conda install pip
 pip install -r requirement.txt
 ```
