@@ -1,4 +1,3 @@
-# pFedVEM
 ## Confidence-aware Personalized Federated Learning via Variational Expectation Maximization [CVPR 2023]
 
 
@@ -18,10 +17,10 @@ In this repository, we present the implementation of two scenarios, label distri
 ### Download
 Make sure that conda is installed.
 ```sh
-git clone git@github.com:JunyiZhu-AI/pFedVEM.git
-cd pFedVEM
-conda create -n pfedvem python==3.8
-conda activate pfedvem
+git clone git@github.com:JunyiZhu-AI/confidence_aware_PFL.git
+cd confidence_aware_PFL
+conda create -n vem python==3.8
+conda activate vem
 conda install pip
 pip install -r requirement.txt
 ```
