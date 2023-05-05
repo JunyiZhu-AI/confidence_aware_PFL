@@ -6,7 +6,7 @@ import copy
 
 class VEMServer:
 
-    def __init__(self, model_base, device):
+    def __init__(self, model_base, beta, device):
         self.accum_model_state = None
         self.mu_W = None
         self.mu_b = None
@@ -14,6 +14,7 @@ class VEMServer:
         self.num_data = 0
         self.model_base = model_base
         self.device = device
+        self.beta = beta
 
     def connect_clients(self, clients):
         self.clients = clients
@@ -33,6 +34,14 @@ class VEMServer:
                 )
 
     @torch.no_grad()
+    def aggregation(self):
+        model_base = self.model_base.state_dict()
+        for key in self.accum_model_state.keys():
+            self.accum_model_state[key].mul_(1 - self.beta).add_(
+                model_base[key].mul(self.beta)
+            )
+
+    @torch.no_grad()
     def update_center_model(self, sampled_clients):
         weight_sum = 0
         w_sum = torch.zeros_like(self.mu_W)
@@ -45,8 +54,8 @@ class VEMServer:
             b_sum.add_(bias_mu.div(client.rho**2))
             weight_sum += 1/client.rho**2
 
-        self.mu_W = w_sum.div(weight_sum)
-        self.mu_b = b_sum.div(weight_sum)
+        self.mu_W = self.beta * self.mu_W + (1 - self.beta) * w_sum.div(weight_sum)
+        self.mu_b = self.beta * self.mu_b + (1 - self.beta) * b_sum.div(weight_sum)
 
     @torch.no_grad()
     def update_base_model(self, sampled_clients):
@@ -60,9 +69,9 @@ class VEMServer:
                 len(self.clients[client_idx].train_loader.dataset)/sampled_data
             )
 
+        self.aggregation()
         for client in self.clients:
             client.model_base.load_state_dict(self.accum_model_state)
-
         self.model_base.load_state_dict(self.accum_model_state)
         self.accum_model_state = None
 

@@ -22,6 +22,7 @@ def train(
     path_to_data,
     relabel,
     seed,
+    beta,
     max_data,
     head_epochs,
     base_epochs,
@@ -48,6 +49,7 @@ def train(
     model_base = eval(f"{model}Base()").to(device)
     client_sampler = BinomialSampler(n_clients, p=sampling_rate)
     server = Server(model_base=model_base,
+                    beta=beta,
                     device=device)
     server.mu_W = torch.randn(model_base.d_feature, local_classes, device=device)
     server.mu_b = torch.randn(local_classes, device=device)

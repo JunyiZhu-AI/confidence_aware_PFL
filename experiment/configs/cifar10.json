@@ -16,5 +16,6 @@
     "head_epochs": 10,
     "scale": 1,
     "max_data": null,
+    "beta": 0,
     "n_mc": 5
 }

@@ -22,6 +22,7 @@ from vem import train
 @click.option("--base_epochs", default=10, help="Number of epochs for base network training.")
 @click.option("--n_mc", default=5, help="number of classes in each client.")
 @click.option("--scale", default=1, help="Initialized scale of Gaussian posterior.")
+@click.option("--beta", default=0, help="Momentum for update of the global model.")
 @click.option("--n_labels", default=2, help="Number of classes in each local dataset.")
 @click.option("--relabel", is_flag=True)
 @click.option("--n_rounds", default=100, help="Number of communication rounds.")
