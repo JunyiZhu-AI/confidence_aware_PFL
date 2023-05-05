@@ -43,7 +43,7 @@ python3 -m experiment.run_experiment --config experiment/configs/cifar10_data500
 python3 -m experiment.run_experiment --config experiment/configs/cifar100.json
 ```
 
-4. Example of running an experiment by passing arguments directly:
+4. Example of running an experiment by passing arguments directly (the following hyperparameters are not tuned and are for demonstration purposes only):
 ```sh
 python3 -m experiment.run_experiment \
       --model CNNCifar \
@@ -61,11 +61,12 @@ python3 -m experiment.run_experiment \
       --sampling_rate 0.1 \
       --seed 42 \
       --n_mc 1 \
+      --beta 0.9 \
       --scale 1
 ```
 
 ### Modify
-The explanation of hyperparameters can be found in the ```experiment\run_experiment.py``` file. Our method employs a head-base architecture, making it easily adaptable to other types of networks. If you wish to modify the network, we recommend fine-tuning the hyperparameters. In our experience, it is efficient to use the hyperparameters of Federated Averaging (FedAvg) for the base network, while only tuning the head network specifically.
+The explanation of hyperparameters can be found in the ```experiment\run_experiment.py``` file. Our method employs a head-base architecture, making it easily adaptable to other types of networks. If you wish to modify the network, we recommend fine-tuning the hyperparameters. In our experience, it is efficient to use the hyperparameters of Federated Averaging (FedAvg) for the base network, while only tuning the head network specifically. However, full grid search can often obtain better performance.
 
 ### Citation
 ```
