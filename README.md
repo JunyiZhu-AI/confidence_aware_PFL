@@ -70,10 +70,12 @@ The explanation of hyperparameters can be found in the ```experiment\run_experim
 
 ### Citation
 ```
-@inproceedings{Zhu2023a,
-  TITLE = {Confidence-aware Personalized Federated Learning via Variational Expectation Maximization},
-  AUTHOR = {Zhu, Junyi and Ma, Xingchen and Blaschko, Matthew B.},
-  BOOKTITLE = {IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  YEAR = {2023},
+@InProceedings{Zhu_2023_CVPR,
+    author    = {Zhu, Junyi and Ma, Xingchen and Blaschko, Matthew B.},
+    title     = {Confidence-Aware Personalized Federated Learning via Variational Expectation Maximization},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2023},
+    pages     = {24542-24551}
 }
 ```
